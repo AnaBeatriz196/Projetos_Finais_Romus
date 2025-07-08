@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Histórico</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 20px;
+      background: 0000;
+      color: #4a2c3a;
+    }
+    h1 {
+      color: #b85c7a;
+      text-align: center;
+      margin-bottom: 25px;
+      letter-spacing: 1.2px;
+    }
+    input[type="text"] {
+      display: block;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 12px 15px;
+      font-size: 18px;
+      border: 2px solid #f7b1c2;
+      border-radius: 8px;
+      background-color: #fff0f6;
+      color: #6b3b4a;
+      box-shadow: 0 0 6px #f7b1c2aa;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #d8749a;
+      box-shadow: 0 0 10px #d8749acc;
+      background-color: #fff5fa;
+    }
+    #history {
+      margin-top: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 15px 20px;
+      background-color: #ffe6f0;
+      border: 2px solid #f7b1c2;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #f7b1c2aa;
+      min-height: 60px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #7f4f62;
+      font-size: 16px;
+    }
+    #history strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: #b85c7a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Histórico</h1>
+
+  <input type="text" id="inputText" placeholder="Digite algo..." autofocus autocomplete="off" />
+
+  <div id="history">
+    <strong>Histórico completo:</strong>
+    <div id="historyText"></div>
+  </div>
+
+  <script>
+    const stack = [];
+    const input = document.getElementById('inputText');
+    const historyText = document.getElementById('historyText');
+    
+    let previousValue = '';
+
+    function updateHistory() {
+      // Concatenar todos os caracteres da pilha em uma única string
+      historyText.textContent = stack.join('');
+    }
+
+    input.addEventListener('input', () => {
+      const currentValue = input.value;
+
+      if(currentValue.length > previousValue.length) {
+        // Caractere(s) adicionados
+        const addedChars = currentValue.slice(previousValue.length);
+        for (const ch of addedChars) {
+          stack.push(ch);
+        }
+      } else if (currentValue.length < previousValue.length) {
+        // Caractere(s) removidos
+        const removedCount = previousValue.length - currentValue.length;
+        for(let i = 0; i < removedCount; i++) {
+          stack.pop();
+        }
+      }
+      
+      previousValue = currentValue;
+      updateHistory();
+    });
+  </script>
+</body>
+</html>
