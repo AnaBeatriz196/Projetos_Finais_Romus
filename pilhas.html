@@ -78,7 +78,6 @@
     let previousValue = '';
 
     function updateHistory() {
-      // Concatenar todos os caracteres da pilha em uma única string
       historyText.textContent = stack.join('');
     }
 
@@ -86,13 +85,11 @@
       const currentValue = input.value;
 
       if(currentValue.length > previousValue.length) {
-        // Caractere(s) adicionados
         const addedChars = currentValue.slice(previousValue.length);
         for (const ch of addedChars) {
           stack.push(ch);
         }
       } else if (currentValue.length < previousValue.length) {
-        // Caractere(s) removidos
         const removedCount = previousValue.length - currentValue.length;
         for(let i = 0; i < removedCount; i++) {
           stack.pop();
