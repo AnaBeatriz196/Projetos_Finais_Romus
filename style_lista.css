@@ -1,0 +1,132 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffe6f0;
+  color: #333;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+header {
+  padding: 20px;
+  background-color: #ff99cc;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+.menu-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+main {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 80px);
+}
+.produtos {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+.produto-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+.produto-card h3 {
+  margin: 0 0 10px;
+  color: #d63384;
+}
+.produto-card p {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+.produto-card .preco {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.produto-card button {
+  background-color: #ff99cc;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.produto-card button:hover {
+  background-color: #ff66b2;
+}
+.carrinho {
+  width: 300px;
+  background: #fff0f5;
+  padding: 20px;
+  border-left: 2px solid #ff99cc;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+  position: fixed;
+  top: 80px;
+  right: 0;
+  height: calc(100vh - 80px);
+  z-index: 2;
+}
+.carrinho.aberto {
+  transform: translateX(0);
+}
+.carrinho h2 {
+  color: #d63384;
+}
+.carrinho ul {
+  list-style: none;
+  padding: 0;
+}
+.carrinho li {
+  background-color: #ffe6f2;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.carrinho li button {
+  background-color: #ff99cc;
+  border: none;
+  padding: 4px 8px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.carrinho li button:hover {
+  background-color: #cc0052;
+}
+.carrinho > button {
+  background-color: #ff99cc;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+  width: 100%;
+}
+.carrinho > button:hover {
+  background-color: #ff66b2;
+}
+.total {
+  font-weight: bold;
+  margin-top: 15px;
+  color: #d63384;
+}
